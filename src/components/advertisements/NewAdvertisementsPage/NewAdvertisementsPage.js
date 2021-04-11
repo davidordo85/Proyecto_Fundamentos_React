@@ -2,9 +2,9 @@ import React from 'react';
 import './NewAdvertisementsPage.css';
 import Layout from '../../layout/Layout';
 
-const NewAdvertisementsPage = () => {
+const NewAdvertisementsPage = props => {
   return (
-    <Layout title="What are you thinking?">
+    <Layout title="What are you thinking?" {...props}>
       <div>NewAdvertisementPage</div>
     </Layout>
   );

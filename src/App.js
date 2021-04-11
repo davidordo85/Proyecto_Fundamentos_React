@@ -9,9 +9,10 @@ function App() {
   const [isLogged, setIsLogged] = React.useState(false);
 
   const handleLogin = () => setIsLogged(true);
+
   return (
     <div className="App">
-      {isLogged ? <AdvertisementsPage /> : <LoginPage onLogin={handleLogin} />}
+      {isLogged ? (<AdvertisementsPage />) : (<LoginPage onLogin={handleLogin} />)}
       {/*<AdvertisementsPage/>
       <NewAdvertisementPage/>
       <AdvertisementDetailPage/>*/}

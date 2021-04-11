@@ -5,7 +5,7 @@ import './AdvertisementsPage.css';
 import scopedStyles from './AdvertisementsPage.module.css';
 import Layout from '../../layout/Layout';
 
-const AdvertisementsPage = ({ className }) => {
+const AdvertisementsPage = ({ className, ...props }) => {
   const [advertisements, setAdvertisements] = React.useState([]);
 
   React.useEffect(() => {
@@ -25,7 +25,7 @@ const AdvertisementsPage = ({ className }) => {
   const styles = { color: advertisements.length > 2 ? 'red' : 'green' };
 
   return (
-    <Layout title="What's going on...">
+    <Layout title="What's going on..." {...props}>
       <div className={classnames(scopedStyles.advertisementPage, className)}>
         <ul style={styles}>{items}</ul>
       </div>
