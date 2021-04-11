@@ -5,6 +5,8 @@ import './AdvertisementsPage.css';
 import scopedStyles from './AdvertisementsPage.module.css';
 import Layout from '../../layout/Layout';
 
+// TODO: a ver como preparo esto para no tener problemas despues con el backend
+
 const AdvertisementsPage = ({ className, ...props }) => {
   const [advertisements, setAdvertisements] = React.useState([]);
 
