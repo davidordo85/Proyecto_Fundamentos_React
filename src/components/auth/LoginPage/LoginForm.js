@@ -7,7 +7,7 @@ import FormField from '../../shared/FormField';
 
 import './LoginForm.css';
 
-function LoginForm({ onSubmit }) {
+function LoginForm({ onSubmit, isLoading }) {
 
     const [credentials, setCredentials] = React.useState({
         email: '',
@@ -53,7 +53,7 @@ function LoginForm({ onSubmit }) {
         type="submit"
         className="loginForm-submit"
         variant="primary"
-        disabled={!email || !password}
+        disabled={isLoading || !email || !password}
         >
         Log in
       </Button>
