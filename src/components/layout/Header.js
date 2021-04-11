@@ -5,8 +5,13 @@ import classNames from 'classnames';
 import { ReactComponent as Icon } from './../../assets/nodelogo.svg';
 import './Header.css';
 import Button from '../shared/Button';
+import { logout } from '../../api/auth';
 
-const Header = ({ className, isLogged, ...props }) => {
+const Header = ({ className, isLogged, onLogout, ...props }) => {
+  const handleLogoutClick = () => {
+    logout().then(onLogout);
+  };
+
   return (
     <header className={classNames('header', className)} {...props}>
       {/* <Link to="/"> */}
@@ -17,31 +22,29 @@ const Header = ({ className, isLogged, ...props }) => {
       <nav className="header-nav">
         <Button
           //   as={Link}
-          to="/advert"
+          to="/tweet"
           variant="primary"
           className="header-button"
         >
-          Adverts
+          Tweet
         </Button>
-        { isLogged ? (
-          <Button
-            className="header-button"
-            // onClick={() => logout().then(onLogout)}
-          >
+        {isLogged ? (
+          <Button className="header-button" onClick={handleLogoutClick}>
             Log out
           </Button>
         ) : (
           <Button
-          // as={Link} 
-          to="/login" 
-          className="header-button"
+            // as={Link}
+            to="/login"
+            className="header-button"
           >
             Login
           </Button>
-        )}        
+        )}
       </nav>
     </header>
   );
 };
 
 export default Header;
+

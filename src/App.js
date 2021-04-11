@@ -14,7 +14,9 @@ function App() {
 
   return (
     <div className="App">
-      {isLogged ? (<AdvertisementsPage />) : (<LoginPage onLogin={handleLogin} />)}
+      {isLogged ? (<AdvertisementsPage isLogged={isLogged} onLogout={handleLogout}/>
+      ) : (
+      <LoginPage onLogin={handleLogin} />)}
       {/*<AdvertisementsPage/>
       <NewAdvertisementPage/>
       <AdvertisementDetailPage/>*/}

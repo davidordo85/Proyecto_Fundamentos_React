@@ -11,10 +11,10 @@ function LoginPage({ onLogin }) {
   const resetError = () => setError(null);
 
   const handleSubmit = async credentials => {
-    // login(credentials).then(() => onLogin());
+    // login(credentials).then(() => onLogin());    
+    resetError();
+    setIsLoading(true);
     try {
-      setIsLoading(true);
-      setError(null);
       await login(credentials);
       onLogin();
     } catch (error) {
