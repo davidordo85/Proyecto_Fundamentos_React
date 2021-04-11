@@ -3,6 +3,7 @@ import React from 'react';
 
 import Button from '../../shared/Button';
 import FormField from '../../shared/FormField';
+import Checkbox from '../../shared/Checkbox';
 
 import './LoginForm.css';
 
@@ -28,14 +29,16 @@ function LoginForm({ onSubmit, isLoading }) {
         onSubmit(credentials);
     }
 
-    const { email, password} = credentials;
+
+
+    const { email, password } = credentials;
 
   return (
     <form className="loginForm" onSubmit={handleSubmit}>
       <FormField
         type="text"
         name="email"
-        label="phone, email or username"
+        label="email"
         className="loginForm-field"
         value={email}
         onChange={handleChange}
@@ -48,6 +51,11 @@ function LoginForm({ onSubmit, isLoading }) {
         value={password}
         onChange={handleChange}
       />
+      <Checkbox
+        type="checkbox"
+        >
+        Remember password
+      </Checkbox>
       <Button 
         type="submit"
         className="loginForm-submit"
@@ -56,6 +64,7 @@ function LoginForm({ onSubmit, isLoading }) {
         >
         Log in
       </Button>
+
     </form>
   );
 }
