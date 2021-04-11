@@ -1,14 +1,16 @@
 import './App.css';
 
+import { LoginPage } from './components/auth';
 import {AdvertisementsPage, NewAdvertisementPage, AdvertisementDetailPage} from './components/advertisements';
-import Button from './components/shared/Button';
+
 
 function App() {
   return (
     <div className="App">
-      <AdvertisementsPage/>
+      <LoginPage />
+      {/*<AdvertisementsPage/>
       <NewAdvertisementPage/>
-      <AdvertisementDetailPage/>
+      <AdvertisementDetailPage/>*/}
     </div>
   );
 }

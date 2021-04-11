@@ -17,11 +17,11 @@ const Header = ({ className, ...props }) => {
       <nav className="header-nav">
         <Button
           //   as={Link}
-          to="/tweet"
+          to="/advert"
           variant="primary"
           className="header-button"
         >
-          Tweet
+          Adverts
         </Button>
         {/* {loggedUserId ? (
           <Button
