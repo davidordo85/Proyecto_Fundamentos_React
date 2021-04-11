@@ -1,16 +1,16 @@
 import './App.css';
 
-import AdvertisementsPage from './components/advertisements/AdvertisementsPage';
+import {AdvertisementsPage, NewAdvertisementPage, AdvertisementDetailPage} from './components/advertisements';
 import Button from './components/shared/Button';
 
 function App() {
   return (
     <div className="App">
-      <Button variant="primary">Log in</Button>
-      <AdvertisementsPage className="page" />
+      <AdvertisementsPage/>
+      <NewAdvertisementPage/>
+      <AdvertisementDetailPage/>
     </div>
   );
 }
 
 export default App;
-
