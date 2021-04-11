@@ -10,6 +10,8 @@ function App() {
 
   const handleLogin = () => setIsLogged(true);
 
+  const handleLogout = () => setIsLogged(false);
+
   return (
     <div className="App">
       {isLogged ? (<AdvertisementsPage />) : (<LoginPage onLogin={handleLogin} />)}
