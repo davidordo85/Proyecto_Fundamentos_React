@@ -1,3 +1,4 @@
+import React from 'react';
 import './App.css';
 
 import { LoginPage } from './components/auth';
@@ -5,9 +6,12 @@ import {AdvertisementsPage, NewAdvertisementPage, AdvertisementDetailPage} from 
 
 
 function App() {
+  const [isLogged, setIsLogged] = React.useState(false);
+
+  const handleLogin = () => setIsLogged(true);
   return (
     <div className="App">
-      <LoginPage />
+      {isLogged ? <AdvertisementsPage /> : <LoginPage onLogin={handleLogin} />}
       {/*<AdvertisementsPage/>
       <NewAdvertisementPage/>
       <AdvertisementDetailPage/>*/}
