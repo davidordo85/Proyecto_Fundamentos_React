@@ -1,3 +1,5 @@
+
+import classNames from 'classnames';
 import React from 'react';
 
 import Button from '../../shared/Button';
@@ -21,6 +23,9 @@ function LoginForm() {
             return newCredentials;
         });
     };
+
+    const { email, password} = credentials;
+
   return (
     <form className="loginForm">
       <FormField
@@ -28,7 +33,7 @@ function LoginForm() {
         name="email"
         label="phone, email or username"
         className="loginForm-field"
-        value={credentials.username}
+        value={email}
         onChange={handleChange}
       />
       <FormField
@@ -36,10 +41,15 @@ function LoginForm() {
         name="password"
         label="password"
         className="loginForm-field"
-        value={credentials.username}
+        value={password}
         onChange={handleChange}
       />
-      <Button type="submit" className="loginForm-submit" variant="primary">
+      <Button 
+        type="submit"
+        className="loginForm-submit"
+        variant="primary"
+        disabled={!email || !password}
+        >
         Log in
       </Button>
     </form>
