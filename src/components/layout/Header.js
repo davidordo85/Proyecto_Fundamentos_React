@@ -1,4 +1,3 @@
- 
 import React from 'react';
 import classNames from 'classnames';
 
@@ -22,11 +21,11 @@ const Header = ({ className, isLogged, onLogout, ...props }) => {
       <nav className="header-nav">
         <Button
           //   as={Link}
-          to="/tweet"
+          to="/NewAdvertisement"
           variant="primary"
           className="header-button"
         >
-          Tweet
+          New advertisement
         </Button>
         {isLogged ? (
           <Button className="header-button" onClick={handleLogoutClick}>
@@ -47,4 +46,3 @@ const Header = ({ className, isLogged, onLogout, ...props }) => {
 };
 
 export default Header;
-
