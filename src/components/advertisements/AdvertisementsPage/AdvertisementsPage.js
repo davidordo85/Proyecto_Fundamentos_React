@@ -30,11 +30,10 @@ const AdvertisementsPage = ({ className, ...props }) => {
     </li>
   ));
 
-  const styles = { color: advertisements.length > 1 ? 'red' : 'green' };
   return (
     <Layout title="What's going on..." {...props}>
       <div className={classnames(scopedStyles.advertisementsPage, className)}>
-        <ul style={styles}>{items}</ul>
+        <ul>{items}</ul>
       </div>
     </Layout>
   );
