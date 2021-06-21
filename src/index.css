@@ -27,7 +27,8 @@ ul {
 
 li {
   border: solid 0.1rem black;
-  margin: 2rem;
+  margin-bottom: 2rem;
+  padding: 1rem;
 }
 
 svg {

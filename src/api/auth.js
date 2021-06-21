@@ -2,7 +2,7 @@ import client, { configureClient, resetClient } from './client';
 
 export const login = credentials => {
   return client.post('/api/auth/login', credentials).then(({ accessToken }) => {
-      configureClient({accessToken})
+    configureClient({ accessToken });
   });
 };
 
