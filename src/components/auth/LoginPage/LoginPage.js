@@ -7,8 +7,15 @@ import './LoginPage.css';
 function LoginPage({ onLogin }) {
   const [error, setError] = React.useState(null);
   const [isLoading, setIsLoading] = React.useState(false);
+  const isLogged = React.useRef(false);
 
   const resetError = () => setError(null);
+
+  React.useEffect(() => {
+    if (isLogged.current) {
+      onLogin();
+    }
+  }, [isLogged.current, onLogin]);
 
   const handleSubmit = async credentials => {
     // login(credentials).then(() => onLogin());
@@ -16,7 +23,7 @@ function LoginPage({ onLogin }) {
     setIsLoading(true);
     try {
       await login(credentials);
-      onLogin();
+      isLogged.current = true;
     } catch (error) {
       setError(error);
     } finally {

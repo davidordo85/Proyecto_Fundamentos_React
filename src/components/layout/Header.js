@@ -4,13 +4,9 @@ import classNames from 'classnames';
 import { ReactComponent as Icon } from './../../assets/nodelogo.svg';
 import './Header.css';
 import Button from '../shared/Button';
-import { logout } from '../../api/auth';
+import AuthButton from '../auth/AuthButton';
 
 const Header = ({ className, isLogged, onLogout, ...props }) => {
-  const handleLogoutClick = () => {
-    logout().then(onLogout);
-  };
-
   return (
     <header className={classNames('header', className)} {...props}>
       {/* <Link to="/"> */}
@@ -27,19 +23,11 @@ const Header = ({ className, isLogged, onLogout, ...props }) => {
         >
           New advertisement
         </Button>
-        {isLogged ? (
-          <Button className="header-button" onClick={handleLogoutClick}>
-            Log out
-          </Button>
-        ) : (
-          <Button
-            // as={Link}
-            to="/login"
-            className="header-button"
-          >
-            Login
-          </Button>
-        )}
+        <AuthButton
+          className="header-button"
+          isLogged={isLogged}
+          onLogout={onLogout}
+        />
       </nav>
     </header>
   );

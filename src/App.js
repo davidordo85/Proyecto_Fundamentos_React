@@ -1,12 +1,16 @@
 import React from 'react';
+import T from 'prop-types';
 import './App.css';
 
 import { LoginPage } from './components/auth';
-import {AdvertisementsPage, NewAdvertisementPage, AdvertisementDetailPage} from './components/advertisements';
+import {
+  AdvertisementsPage,
+  NewAdvertisementPage,
+  AdvertisementDetailPage,
+} from './components/advertisements';
 
-
-function App() {
-  const [isLogged, setIsLogged] = React.useState(false);
+function App({ isInitiallyLogged }) {
+  const [isLogged, setIsLogged] = React.useState(isInitiallyLogged);
 
   const handleLogin = () => setIsLogged(true);
 
@@ -14,14 +18,20 @@ function App() {
 
   return (
     <div className="App">
-      {isLogged ? (<AdvertisementsPage isLogged={isLogged} onLogout={handleLogout}/>
+      {isLogged ? (
+        <AdvertisementsPage isLogged={isLogged} onLogout={handleLogout} />
       ) : (
-      <LoginPage onLogin={handleLogin} />)}
+        <LoginPage onLogin={handleLogin} />
+      )}
       {/*<AdvertisementsPage/>
       <NewAdvertisementPage/>
       <AdvertisementDetailPage/>*/}
     </div>
   );
 }
+
+App.propTypes = {
+  isInitiallyLogged: T.bool.isRequired,
+};
 
 export default App;
