@@ -7,8 +7,8 @@ const setAuthorizationHeader = token => {
 };
 
 const removeAuthorizationHeader = () => {
-  delete client.defaults.headers.common['Authorization']
-}
+  delete client.defaults.headers.common['Authorization'];
+};
 
 client.interceptors.response.use(
   response => response.data,
@@ -18,9 +18,10 @@ client.interceptors.response.use(
     }
     return Promise.reject({
       message: error.response.statusText,
+      statusCode: error.response.status,
       ...error.response.data,
     });
-  }
+  },
 );
 
 export const configureClient = ({ accessToken }) => {
@@ -34,4 +35,3 @@ export const resetClient = () => {
 };
 
 export default client;
-

@@ -1,37 +1,35 @@
-
 import React from 'react';
 
 import Button from '../../shared/Button';
 import FormField from '../../shared/FormField';
-import Checkbox from '../../shared/Checkbox';
+//import Checkbox from '../../shared/Checkbox';
 
 import './LoginForm.css';
 
 function LoginForm({ onSubmit, isLoading }) {
+  const [credentials, setCredentials] = React.useState({
+    email: '',
+    password: '',
+    remember: false,
+  });
 
-    const [credentials, setCredentials] = React.useState({
-        email: '',
-        password: '',
+  const handleChange = event => {
+    console.log(event.target.type === 'checkbox');
+    setCredentials(oldCredentials => {
+      const newCredentials = {
+        ...oldCredentials,
+        [event.target.name]: event.target.value,
+      };
+      return newCredentials;
     });
+  };
 
-    const handleChange = event => {
-        setCredentials(oldCredentials => {
-            const newCredentials = {
-                ...oldCredentials,
-                [event.target.name]: event.target.value,
-            };
-            return newCredentials;
-        });
-    };
+  const handleSubmit = event => {
+    event.preventDefault();
+    onSubmit(credentials);
+  };
 
-    const handleSubmit = event => {
-        event.preventDefault();
-        onSubmit(credentials);
-    }
-
-
-
-    const { email, password } = credentials;
+  const { email, password, remember } = credentials;
 
   return (
     <form className="loginForm" onSubmit={handleSubmit}>
@@ -51,20 +49,20 @@ function LoginForm({ onSubmit, isLoading }) {
         value={password}
         onChange={handleChange}
       />
-      <Checkbox
+      <input
         type="checkbox"
-        >
-        Remember password
-      </Checkbox>
-      <Button 
+        name="checkbox"
+        checked={remember}
+        onChange={handleChange}
+      />
+      <Button
         type="submit"
         className="loginForm-submit"
         variant="primary"
         disabled={isLoading || !email || !password}
-        >
+      >
         Log in
       </Button>
-
     </form>
   );
 }
