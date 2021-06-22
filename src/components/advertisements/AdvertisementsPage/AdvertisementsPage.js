@@ -1,11 +1,18 @@
 import React from 'react';
 import formatDistanceToNow from 'date-fns/formatDistanceToNow';
-
 import { getLatestAdvertisements } from '../../../api/advertisements';
 import classnames from 'classnames';
+import { Button } from '../../shared/';
 import './AdvertisementsPage.css';
 import scopedStyles from './AdvertisementsPage.module.css';
 import Layout from '../../layout/Layout';
+
+const EmptyList = ({ ...props }) => (
+  <div style={{ textAlign: 'center' }}>
+    <p>Be the first Advertisement!</p>
+    <Button variant="primary"> New Advertisement </Button>
+  </div>
+);
 
 const AdvertisementsPage = ({ className, ...props }) => {
   const [advertisements, setAdvertisements] = React.useState([]);
@@ -33,7 +40,7 @@ const AdvertisementsPage = ({ className, ...props }) => {
   return (
     <Layout title="What's going on..." {...props}>
       <div className={classnames(scopedStyles.advertisementsPage, className)}>
-        <ul>{items}</ul>
+        {items.length ? <ul>{items}</ul> : <EmptyList {...props} />}
       </div>
     </Layout>
   );
