@@ -10,11 +10,10 @@ function LoginForm({ onSubmit, isLoading }) {
   const [credentials, setCredentials] = React.useState({
     email: '',
     password: '',
-    remember: false,
+    remember: 'false',
   });
 
   const handleChange = event => {
-    console.log(event.target.type === 'checkbox');
     setCredentials(oldCredentials => {
       const newCredentials = {
         ...oldCredentials,
@@ -22,6 +21,11 @@ function LoginForm({ onSubmit, isLoading }) {
       };
       return newCredentials;
     });
+  };
+
+  const handleCheckbox = event => {
+    const newCredentials = { ...credentials, remember: event.target.checked };
+    setCredentials(newCredentials);
   };
 
   const handleSubmit = event => {
@@ -53,7 +57,7 @@ function LoginForm({ onSubmit, isLoading }) {
         type="checkbox"
         name="checkbox"
         checked={remember}
-        onChange={handleChange}
+        onChange={handleCheckbox}
       />
       <Button
         type="submit"
