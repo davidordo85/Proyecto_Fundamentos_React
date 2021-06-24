@@ -1,4 +1,5 @@
 import T from 'prop-types';
+import { Link } from 'react-router-dom';
 import { Button } from '../../shared';
 import { logout } from '../../../api/auth';
 
@@ -10,8 +11,8 @@ const AuthButton = ({ className, isLogged, onLogout }) => {
   const props = isLogged
     ? { onClick: handleLogoutClick, children: 'Log out' }
     : {
-        // as: Link,
-        //  to: '/login',
+        as: Link,
+        to: '/login',
         children: 'Log in',
       };
 

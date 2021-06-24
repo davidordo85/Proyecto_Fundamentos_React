@@ -8,6 +8,7 @@ import {
   NewAdvertisementPage,
   AdvertisementDetailPage,
 } from './components/advertisements';
+import { Switch, Route, Redirect } from 'react-router';
 
 function App({ isInitiallyLogged }) {
   const [isLogged, setIsLogged] = React.useState(isInitiallyLogged);
@@ -18,7 +19,30 @@ function App({ isInitiallyLogged }) {
 
   return (
     <div className="App">
-      {isLogged ? (
+      <Switch>
+        <Route path="/advert/:id" component={AdvertisementDetailPage} />
+        <Route exact path="/advert/new" component={NewAdvertisementPage} />
+        <Route path="/login" component={LoginPage} />
+        <Route path="/adverts" component={AdvertisementsPage} />
+        <Route path="/404">
+          <div
+            style={{
+              textAlign: 'center',
+              fontSize: 48,
+              fontWeight: 'bold',
+            }}
+          >
+            404 | Not found page
+          </div>
+        </Route>
+        <Route exact path="/">
+          <Redirect to="/adverts" />
+        </Route>
+        <Route>
+          <Redirect to="/404" />
+        </Route>
+      </Switch>
+      {/*       {isLogged ? (
         <AdvertisementsPage isLogged={isLogged} onLogout={handleLogout} />
       ) : (
         <LoginPage onLogin={handleLogin} />

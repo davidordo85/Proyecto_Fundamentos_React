@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import App from './App';
 import './index.css';
 
@@ -10,6 +11,8 @@ const accessToken = storage.get('auth');
 configureClient({ accessToken });
 
 ReactDOM.render(
-  <App isInitiallyLogged={!!accessToken} />,
+  <Router>
+    <App isInitiallyLogged={!!accessToken} />
+  </Router>,
   document.getElementById('root'),
 );
