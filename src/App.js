@@ -2,7 +2,7 @@ import React from 'react';
 import T from 'prop-types';
 import './App.css';
 
-import { LoginPage } from './components/auth';
+import { LoginPage, PrivateRoute } from './components/auth';
 import {
   AdvertisementsPage,
   NewAdvertisementPage,
@@ -20,19 +20,34 @@ function App({ isInitiallyLogged }) {
   return (
     <div className="App">
       <Switch>
-        <Route exact path="/advert/new" component={NewAdvertisementPage} />
-        <Route exact path="/advert/:id" component={AdvertisementDetailPage} />
-        <Route exact path="/adverts" component={AdvertisementsPage}>
+        <PrivateRoute
+          isLogged={isLogged}
+          exact
+          path="/advert/new"
+          component={NewAdvertisementPage}
+        />
+        <PrivateRoute
+          isLogged={isLogged}
+          exact
+          path="/advert/:id"
+          component={AdvertisementDetailPage}
+        />
+        <PrivateRoute
+          isLogged={isLogged}
+          exact
+          path="/adverts"
+          component={AdvertisementsPage}
+        >
           <AdvertisementsPage isLogged={isLogged} onLogout={handleLogout} />
-        </Route>
+        </PrivateRoute>
         <Route exact path="/login" component={LoginPage}>
           {({ history }) => (
             <LoginPage onLogin={handleLogin} history={history} />
           )}
         </Route>
-        <Route exact path="/">
+        <PrivateRoute isLogged={isLogged} exact path="/">
           <Redirect to="/adverts" />
-        </Route>
+        </PrivateRoute>
         <Route path="/404">
           <div
             style={{
