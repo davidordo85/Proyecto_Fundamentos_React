@@ -20,10 +20,19 @@ function App({ isInitiallyLogged }) {
   return (
     <div className="App">
       <Switch>
-        <Route path="/advert/:id" component={AdvertisementDetailPage} />
         <Route exact path="/advert/new" component={NewAdvertisementPage} />
-        <Route path="/login" component={LoginPage} />
-        <Route path="/adverts" component={AdvertisementsPage} />
+        <Route exact path="/advert/:id" component={AdvertisementDetailPage} />
+        <Route exact path="/adverts" component={AdvertisementsPage}>
+          <AdvertisementsPage isLogged={isLogged} onLogout={handleLogout} />
+        </Route>
+        <Route exact path="/login" component={LoginPage}>
+          {({ history }) => (
+            <LoginPage onLogin={handleLogin} history={history} />
+          )}
+        </Route>
+        <Route exact path="/">
+          <Redirect to="/adverts" />
+        </Route>
         <Route path="/404">
           <div
             style={{
@@ -34,9 +43,6 @@ function App({ isInitiallyLogged }) {
           >
             404 | Not found page
           </div>
-        </Route>
-        <Route exact path="/">
-          <Redirect to="/adverts" />
         </Route>
         <Route>
           <Redirect to="/404" />
