@@ -25,7 +25,7 @@ ul {
   list-style: none;
 }
 
-li {
+article {
   border: solid 0.1rem black;
   margin-bottom: 2rem;
   padding: 1rem;
