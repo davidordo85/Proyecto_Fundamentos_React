@@ -1,9 +1,9 @@
 import React from 'react';
 import formatDistanceToNow from 'date-fns/formatDistanceToNow';
 
-const Advertisement = ({ name, price, sale, tags, createdAt }) => {
+const Advertisement = ({ id, name, price, sale, tags, createdAt, history }) => {
   const handleClick = () => {
-    alert('Construyendo un enlace al detalle...');
+    history.push(`/advert/${id}`);
   };
 
   return (

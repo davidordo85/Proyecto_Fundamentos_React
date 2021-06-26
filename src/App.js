@@ -38,7 +38,13 @@ function App({ isInitiallyLogged }) {
           path="/adverts"
           component={AdvertisementsPage}
         >
-          <AdvertisementsPage isLogged={isLogged} onLogout={handleLogout} />
+          {({ history }) => (
+            <AdvertisementsPage
+              isLogged={isLogged}
+              onLogout={handleLogout}
+              history={history}
+            />
+          )}
         </PrivateRoute>
         <Route exact path="/login" component={LoginPage}>
           {({ history }) => (

@@ -14,7 +14,7 @@ const EmptyList = () => (
   </div>
 );
 
-const AdvertisementsPage = ({ className, ...props }) => {
+const AdvertisementsPage = ({ className, history, ...props }) => {
   const [advertisements, setAdvertisements] = React.useState([]);
 
   React.useEffect(() => {
@@ -25,7 +25,10 @@ const AdvertisementsPage = ({ className, ...props }) => {
     <Layout title="What's going on..." {...props}>
       <div className={classnames(scopedStyles.advertisementsPage, className)}>
         {advertisements.length ? (
-          <AdvertisementList advertisements={advertisements} />
+          <AdvertisementList
+            advertisements={advertisements}
+            history={history}
+          />
         ) : (
           <EmptyList />
         )}

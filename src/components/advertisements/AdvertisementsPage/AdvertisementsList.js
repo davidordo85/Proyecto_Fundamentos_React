@@ -1,12 +1,11 @@
 import React from 'react';
 import Advertisement from './Advertisement';
 
-const renderAdvertisement = advertisement => (
-  <Advertisement key={advertisement.id} {...advertisement} />
-);
+const renderAdvertisement = history => advertisement =>
+  <Advertisement key={advertisement.id} {...advertisement} history={history} />;
 
-const AdvertisementList = ({ advertisements }) => {
-  return <ul>{advertisements.map(renderAdvertisement)}</ul>;
+const AdvertisementList = ({ advertisements, history }) => {
+  return <ul>{advertisements.map(renderAdvertisement(history))}</ul>;
 };
 
 export default AdvertisementList;
