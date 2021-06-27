@@ -25,7 +25,16 @@ function App({ isInitiallyLogged }) {
           exact
           path="/advert/new"
           component={NewAdvertisementPage}
-        />
+        >
+          {({ location }) => (
+            <NewAdvertisementPage
+              location={location}
+              isLogged={isLogged}
+              onLogout={handleLogout}
+            />
+          )}
+        </PrivateRoute>
+
         <PrivateRoute
           isLogged={isLogged}
           exact
@@ -47,8 +56,12 @@ function App({ isInitiallyLogged }) {
           )}
         </PrivateRoute>
         <Route exact path="/login" component={LoginPage}>
-          {({ history }) => (
-            <LoginPage onLogin={handleLogin} history={history} />
+          {({ history, location }) => (
+            <LoginPage
+              onLogin={handleLogin}
+              history={history}
+              location={location}
+            />
           )}
         </Route>
         <PrivateRoute isLogged={isLogged} exact path="/">

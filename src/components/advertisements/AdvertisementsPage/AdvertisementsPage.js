@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { getLatestAdvertisements } from '../../../api/advertisements';
 import classnames from 'classnames';
 import './AdvertisementsPage.css';
@@ -10,7 +11,9 @@ import { Button } from '../../shared/';
 const EmptyList = () => (
   <div style={{ textAlign: 'center' }}>
     <p>Be the first Advertisement!</p>
-    <Button variant="primary"> New Advertisement </Button>
+    <Button as={Link} to="/advert/new" variant="primary">
+      New Advertisement
+    </Button>
   </div>
 );
 
