@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './AdvertisementDetailPage.css';
 import Layout from '../../layout/Layout';
 import { getAdvertisementDetail } from '../../../api/advertisements';
+import { Redirect } from 'react-router-dom';
 
-const AdvertisementDetailPage = ({ history, ...props }) => {
+const AdvertisementDetailPage = ({ history, error, ...props }) => {
   const [advert, setAdvert] = React.useState([]);
 
   React.useEffect(() => {
     getAdvertisementDetail(props.match.params.id).then(setAdvert);
   }, []);
+
   return (
     <Layout title="Advertisement Detail">
       <section>
