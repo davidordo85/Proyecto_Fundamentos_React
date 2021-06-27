@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './AdvertisementDetailPage.css';
 import Layout from '../../layout/Layout';
 import { getAdvertisementDetail } from '../../../api/advertisements';
-import { Redirect } from 'react-router-dom';
 
 const AdvertisementDetailPage = ({ history, error, ...props }) => {
   const [advert, setAdvert] = React.useState([]);

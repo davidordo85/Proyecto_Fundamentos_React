@@ -37,6 +37,7 @@ function App({ isInitiallyLogged }) {
 
         <PrivateRoute
           isLogged={isLogged}
+          onLogout={handleLogout}
           exact
           path="/advert/:id"
           component={AdvertisementDetailPage}
